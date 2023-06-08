@@ -1,9 +1,11 @@
 function seeCharacters(characters, menu) {
-    if (characters.length == 0) {
-        console.log("There are no characters stored yet!");
-    } else {
-        console.log('Here are the stored characters: ', characters);
+
+    async function findAll() {
+            const mongoSee = require("./mongoSee");
+            const see = mongoSee();
+            await see.seeData();
     }
+    findAll();
     menu();
     return characters;
 }
