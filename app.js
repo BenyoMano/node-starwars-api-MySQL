@@ -8,6 +8,8 @@ const rl = require("readline").createInterface({
     output: process.stdout
 });
 
+console.clear();
+
 let characters = [];
 
 function iterateThroughNames(array) {
