@@ -28,7 +28,7 @@ function askForCharacter(rl, characters, menu) {
                         console.log("Couldn't find any characters with that name");
                     }
                     if (data.count == 1) {
-                        const newResult = result[0];
+                        const newResult = result[0].name;
                         addItem(newResult, 'single');
                     }
                     if (data.count >= 2) {

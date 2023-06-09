@@ -1,4 +1,4 @@
-function deleteCharacter(rl, characters, menu, iterateThroughNames) {
+async function deleteCharacter(rl, characters, menu) {
 
     async function removeItem(del, action) {
         const mongoRemove = require("./mongoRemove");
@@ -6,17 +6,13 @@ function deleteCharacter(rl, characters, menu, iterateThroughNames) {
         await remove.removeData(del, action);
     }
 
-    iterateThroughNames(characters);
+    await require("./mongoSee")().seeData('summary');
     rl.question("Which character do you want to delete? ", function(del) {
-        // const newResult = result;
         if (del == 'a') {
             removeItem(del, 'all');
         } else {
             removeItem(del, 'single');
         }
-        
-        // characters.splice(del-1, 1); 
-        // iterateThroughNames(characters);
         menu();
     })
 

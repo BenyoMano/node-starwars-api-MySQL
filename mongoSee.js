@@ -18,12 +18,11 @@ function run() {
       
       const database = client.db('starwars');
       const people = database.collection('people');
+      
       const options = {
-        projection: { _id: 0, name: 1 },
+        projection: { _id: 0, rank : 1 },
       };
-      // const options = {
-      //   projection: { _id: 0, name: 1, height: 1, mass: 1, hair_color: 1, skin_color: 1, eye_color: 1, birth_year: 1, gender: 1, homeworld: 1 },
-      // };
+      
   
       const cursor = people.find({}, options);
   
@@ -31,8 +30,10 @@ function run() {
         console.log("No documents found!");
       }
   
+      let i = 1;
       for await (const doc of cursor) {
-        console.dir(doc);
+        console.log(i, doc);
+        i++;
       }
   
     } finally {

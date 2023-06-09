@@ -20,8 +20,15 @@ function run() {
       const people = database.collection('people');
 
       if (action == 'single') {
-        await people.deleteOne();
-        console.log('Single character deleted!');
+        const skip = del -1;
+        const found = await people.findOne({}, { skip: skip });
+        const query = { _id: found._id }
+        const result = await people.deleteOne(query);
+        if (result.deletedCount === 1) {
+          console.log('Single character deleted!');
+        } else {
+          console.log('No documents matched your input!');
+        }
       }
       if (action == 'all') {
         const res = await people.deleteMany({});
