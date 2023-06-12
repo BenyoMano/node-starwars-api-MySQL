@@ -15,7 +15,6 @@ const uri = "mongodb+srv://Benjo:80Bi5opPJX9A7HBe@cluster0.ufix2v0.mongodb.net/?
   async function insertData(newResult, action) {
     try {
       await client.connect();
-  
       const database = client.db('starwars');
       const people = database.collection('people');
 
@@ -33,14 +32,19 @@ const uri = "mongodb+srv://Benjo:80Bi5opPJX9A7HBe@cluster0.ufix2v0.mongodb.net/?
         }
       }
       if (countDocs !== 0) {
-        const document = await people.findOne();
+        const findDocument = await people.findOne();
         let count = 0;
-        for (const value of Object.values(document.rank)) {
+        for (const value of Object.values(findDocument.rank)) {
           count++;
         }
-
-        console.log('RES', document);
+        console.log('RES', findDocument);
         console.log('Count', count);
+        
+        await people.updateOne(
+          { _id: new ObjectId('6483719b3c68f9e7fe761bf1')},
+          { $set: { [`rank.${count +1}`]:  newResult }}
+        ).then(console.log("klar"));
+
       }
   
     } finally {
@@ -52,6 +56,5 @@ const uri = "mongodb+srv://Benjo:80Bi5opPJX9A7HBe@cluster0.ufix2v0.mongodb.net/?
   };
 
 }
-// insertData().catch(console.dir);
 
 module.exports = run;
