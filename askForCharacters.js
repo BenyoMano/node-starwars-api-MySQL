@@ -41,7 +41,7 @@ function askForCharacter(rl, characters, menu) {
                                 addItem(newResult, 'multiple');
 
                             } else {
-                                const newResult = result[picking -1];
+                                const newResult = result[picking -1].name;
                                 addItem(newResult, 'single');
                             }
                             resolve(characters);

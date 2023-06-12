@@ -1,4 +1,5 @@
 
+const res = require('express/lib/response');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://Benjo:80Bi5opPJX9A7HBe@cluster0.ufix2v0.mongodb.net/?retryWrites=true&w=majority";
 
@@ -13,6 +14,7 @@ function run() {
   
   async function removeData(del, action) {
     try {
+      console.log('Please wait...')
 
       await client.connect();
       
@@ -21,13 +23,17 @@ function run() {
 
       if (action == 'single') {
         const skip = del -1;
-        const found = await people.findOne({}, { skip: skip });
-        const query = { _id: found._id }
-        const result = await people.deleteOne(query);
-        if (result.deletedCount === 1) {
-          console.log('Single character deleted!');
+        const findDocument = await people.findOne({});
+        const query = { _id: findDocument._id }
+        const result = await people.updateOne(query, {
+          $unset: { [`rank.${skip + 1}`]: 1 }
+        });
+        
+        console.log('Modiefied count', result.modifiedCount);
+        if (result.modifiedCount === 1) {
+          console.log('Removed one character!');
         } else {
-          console.log('No documents matched your input!');
+          console.log('Failed!');
         }
       }
       if (action == 'all') {

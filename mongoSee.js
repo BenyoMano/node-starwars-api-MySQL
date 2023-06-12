@@ -29,11 +29,9 @@ function run() {
       if ((await people.countDocuments()) === 0) {
         console.log("No documents found!");
       }
-  
-      let i = 1;
+
       for await (const doc of cursor) {
-        console.log(i, doc);
-        i++;
+        console.log(doc.rank);
       }
   
     } finally {
