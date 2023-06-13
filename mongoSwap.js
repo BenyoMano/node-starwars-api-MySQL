@@ -25,19 +25,15 @@ function run() {
       const secondSwap = Number(swap2);
       const findDocument = await people.findOne({});
       const query = { _id: findDocument._id }
-
-      console.log('findDoc.rank[1]', findDocument.rank[1])
-
       const saveName = findDocument.rank[firstSwap];
-      console.log('savedName', saveName);
 
       await people.updateOne(query, {
         $rename: { [`rank.${secondSwap}`]: `rank.${firstSwap}` }
-      }).then(console.log('Updated first'));
+      }).then(console.log('\u2713'));
       
       await people.updateOne(query, {
         $set: { [`rank.${secondSwap}`]: saveName }
-      }).then(console.log('Updated second'));
+      }).then(console.log('\u2713\nSwapped successfully!'));
 
     } finally {
       await client.close();

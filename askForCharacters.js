@@ -1,5 +1,5 @@
 
-function askForCharacter(rl, characters, menu) {
+function askForCharacter(rl, menu) {
 
     function iterateThroughResults(result) {
         for (var i = 0; i < result.length; i++) {
@@ -16,7 +16,7 @@ function askForCharacter(rl, characters, menu) {
     return new Promise((resolve, reject) => {
 
         rl.question("What star-wars character do you want to add?\n", async function(character) {
-            console.log(`Adding ${character}...`);
+            console.log(`Searching for ${character}...`);
             const res = await fetch(`https://swapi.dev/api/people/?search=${character}`);
             
             try {
@@ -29,27 +29,27 @@ function askForCharacter(rl, characters, menu) {
                     }
                     if (data.count == 1) {
                         const newResult = result[0].name;
-                        addItem(newResult, 'single');
+                        await addItem(newResult, 'single');
                     }
                     if (data.count >= 2) {
                         console.log('Found these:');
                         iterateThroughResults(result);
 
-                        rl.question("Pick the one you want by typing the number or all of them by typing (A):", function(picking) {
+                        rl.question("Pick the one you want by typing the number or all of them by typing (A):", async function(picking) {
                             if (picking == 'a') {
                                 const newResult = result;
-                                addItem(newResult, 'multiple');
+                                await addItem(newResult, 'multiple');
 
                             } else {
                                 const newResult = result[picking -1].name;
-                                addItem(newResult, 'single');
+                               await addItem(newResult, 'single');
                             }
-                            resolve(characters);
+                            resolve(addItem);
                             menu();
                         });
                         return;
                     }
-                    resolve(characters);
+                    resolve(addItem);
                 }
                 if (!res.ok) {
                     throw new Error;

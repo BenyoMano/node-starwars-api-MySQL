@@ -13,6 +13,7 @@ function run() {
   
   async function seeData() {
     try {
+      console.log('Please wait...');
 
       await client.connect();
       

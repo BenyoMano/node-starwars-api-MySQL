@@ -1,4 +1,4 @@
-async function deleteCharacter(rl, characters, menu) {
+async function deleteCharacter(rl, menu) {
 
     async function removeItem(del, action) {
         const mongoRemove = require("./mongoRemove");
@@ -7,17 +7,16 @@ async function deleteCharacter(rl, characters, menu) {
     }
 
     await require("./mongoSee")().seeData('summary');
-    rl.question("Which character do you want to deletce? ", function(del) {
+    rl.question("Which character do you want to delete? ", async function(del) {
         if (del == 'a') {
-            removeItem(del, 'all');
+           await removeItem(del, 'all');
         } else {
-            removeItem(del, 'single');
+           await removeItem(del, 'single');
         }
         menu();
     })
 
     menu();
-    return characters;
 }
 
 module.exports = { deleteCharacter }

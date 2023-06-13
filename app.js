@@ -10,32 +10,25 @@ const rl = require("readline").createInterface({
 });
 console.clear();
 console.log('WELCOME TO THE GALAXY!');
-let characters = [];
 
-function iterateThroughNames(array) {
-    const l = array.length;
-    for (var i = 0; i < l; i++) {
-        console.log(i+1, array[i].name);
-    }
-}
 
 function menu() {
     rl.question("Do you want to add (A), swap (S), remove (R), see (C) a character, or quit (Q)?\n", async function(answer) {
         if (answer == 'a') {
             try {
-                characters = await askForCharacter.askForCharacter(rl, characters, menu);
+                await askForCharacter.askForCharacter(rl, menu);
             } catch {
                 console.error(error);
             }
         }
         if (answer == 's') {
-            characters = await swapCharacter.swapCharacter(rl, characters, menu, iterateThroughNames);
+            await swapCharacter.swapCharacter(rl, menu);
         }
         if (answer == 'c') {
-            characters = await seeCharacters.seeCharacters(characters, menu);
+            await seeCharacters.seeCharacters(menu);
         }
         if ( answer == 'r') {
-            characters = await deleteCharacter.deleteCharacter(rl, characters, menu, iterateThroughNames);
+            await deleteCharacter.deleteCharacter(rl, menu);
         }
         if (answer == 'q') {
             rl.close();

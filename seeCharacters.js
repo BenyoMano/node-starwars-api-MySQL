@@ -1,13 +1,12 @@
-function seeCharacters(characters, menu) {
+async function seeCharacters(menu) {
 
     async function findAll() {
             const mongoSee = require("./mongoSee");
             const see = mongoSee();
             await see.seeData();
     }
-    findAll();
+    await findAll();
     menu();
-    return characters;
 }
 
 module.exports = { seeCharacters }

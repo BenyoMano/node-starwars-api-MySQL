@@ -42,7 +42,6 @@ function run() {
           i++;
         }
         
-        console.log('Modiefied count', resultRemoved.modifiedCount);
         if (resultRemoved.modifiedCount === 1) {
           console.log('Removed one character!');
         } else {
@@ -50,8 +49,8 @@ function run() {
         }
       }
       if (action == 'all') {
-        const res = await people.deleteMany({});
-        console.log('Deleted', res.deletedCount, "characters!");
+        await people.deleteMany({});
+        console.log("Deleted all characters!");
       }
   
     } finally {
