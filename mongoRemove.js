@@ -22,15 +22,28 @@ function run() {
       const people = database.collection('people');
 
       if (action == 'single') {
-        const skip = del -1;
+        const newRank = Number(del);
+        const oldRank = newRank + 1;
         const findDocument = await people.findOne({});
         const query = { _id: findDocument._id }
-        const result = await people.updateOne(query, {
-          $unset: { [`rank.${skip + 1}`]: 1 }
+        const resultRemoved = await people.updateOne(query, {
+          $unset: { [`rank.${del}`]: 1 }
         });
+
+        let count = 0;
+        for (const value of Object.values(findDocument.rank)) {
+          count++;
+        }
+        let i = 0;
+        for (const value of Object.values(findDocument.rank)) {
+          await people.updateOne(query, {
+            $rename: { [`rank.${oldRank + i}`]: `rank.${newRank + i}` }
+          });
+          i++;
+        }
         
-        console.log('Modiefied count', result.modifiedCount);
-        if (result.modifiedCount === 1) {
+        console.log('Modiefied count', resultRemoved.modifiedCount);
+        if (resultRemoved.modifiedCount === 1) {
           console.log('Removed one character!');
         } else {
           console.log('Failed!');
