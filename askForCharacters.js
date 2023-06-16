@@ -7,6 +7,12 @@ function askForCharacter(rl, menu) {
         }
     }
 
+    async function createTable() {
+        const mongoCreateTable = require("./mongoAddTable");
+        const createTable = mongoCreateTable();
+        await createTable.insertData();
+    }
+
     async function addItem(newResult, action) {
         const mongoAdd = require("./mongoAdd");
         const add = mongoAdd();
@@ -18,11 +24,14 @@ function askForCharacter(rl, menu) {
         rl.question("What star-wars character do you want to add?\n", async function(character) {
             console.log(`Searching for ${character}...`);
             const res = await fetch(`https://swapi.dev/api/people/?search=${character}`);
-            
+
+
             try {
                 if (res.ok) {
                     const data = await res.json();
                     const result = data.results;
+
+                    // createTable();
 
                     if (data.count == 0) {
                         console.log("Couldn't find any characters with that name");
@@ -55,7 +64,8 @@ function askForCharacter(rl, menu) {
                     throw new Error;
                 }
             } catch {
-                console.error('Error', res.status);
+                console.error('Errorrr', res.status);
+                console.error('Errorrr', res.status);
                 reject();
             }
             menu();
