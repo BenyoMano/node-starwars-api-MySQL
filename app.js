@@ -14,7 +14,7 @@ async function connect(connectionStatus) {
     const establish = retrieveConnection();
     await establish.initialize(connectionStatus);
 }
-connect('connect');
+// connect('connect');
 console.clear();
 console.log('WELCOME TO THE GALAXY!');
 
@@ -38,7 +38,7 @@ function menu() {
             await deleteCharacter.deleteCharacter(rl, menu);
         }
         if (answer == 'q') {
-           await connect('disconnect');
+        //    await connect('disconnect');
             rl.close();
         } else {
             menu();

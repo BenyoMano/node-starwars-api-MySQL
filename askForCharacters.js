@@ -8,13 +8,13 @@ function askForCharacter(rl, menu) {
     }
 
     async function createTable() {
-        const mongoCreateTable = require("./mongoAddTable");
-        const createTable = mongoCreateTable();
+        const MySqlCreateTable = require("./MySqlAddTable");
+        const createTable = MySqlCreateTable();
         await createTable.insertData();
     }
 
     async function addItem(newResult, action) {
-        const mongoAdd = require("./mongoAdd");
+        const mongoAdd = require("./MySqlAdd");
         const add = mongoAdd();
         await add.insertData(newResult, action);
     }

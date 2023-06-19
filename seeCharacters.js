@@ -1,7 +1,7 @@
 async function seeCharacters(menu) {
 
     async function findAll() {
-            const mongoSee = require("./mongoSee");
+            const mongoSee = require("./MySqlSee");
             const see = mongoSee();
             await see.seeData();
     }
