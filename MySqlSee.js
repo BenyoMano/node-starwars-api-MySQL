@@ -18,6 +18,8 @@ function run() {
 
       if (result.length === 0) {
         console.log('No documents found!');
+        return result.length;
+        
       } else {
         for (const doc of result) {
           console.log(doc.Ranking, doc.Name);

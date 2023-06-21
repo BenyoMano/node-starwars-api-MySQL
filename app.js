@@ -9,12 +9,6 @@ const rl = require("readline").createInterface({
     output: process.stdout
 });
 
-async function connect(connectionStatus) {
-    const retrieveConnection = require("./connect");
-    const establish = retrieveConnection();
-    await establish.initialize(connectionStatus);
-}
-// connect('connect');
 console.clear();
 console.log('WELCOME TO THE GALAXY!');
 
@@ -25,7 +19,7 @@ function menu() {
             try {
                 await askForCharacter.askForCharacter(rl, menu);
             } catch {
-                // console.error(error);
+                console.error(error);
             }
         }
         if (answer == 's') {
@@ -38,7 +32,6 @@ function menu() {
             await deleteCharacter.deleteCharacter(rl, menu);
         }
         if (answer == 'q') {
-        //    await connect('disconnect');
             rl.close();
         } else {
             menu();

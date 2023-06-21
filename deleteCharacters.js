@@ -6,7 +6,8 @@ async function deleteCharacter(rl, menu) {
         await remove.removeData(del, action);
     }
 
-    await require("./MySqlSee")().seeData('summary');
+    const resultLength = await require("./MySqlSee")().seeData('summary');
+    if (resultLength === 0) return;
     rl.question("Which character do you want to delete? (# or (A) for all)", async function(del) {
         if (del == 'a') {
            await removeItem(del, 'all');

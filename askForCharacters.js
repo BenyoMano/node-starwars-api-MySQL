@@ -14,8 +14,8 @@ function askForCharacter(rl, menu) {
     }
 
     async function addItem(newResult, action) {
-        const mongoAdd = require("./MySqlAdd");
-        const add = mongoAdd();
+        const mysqlAdd = require("./MySqlAdd");
+        const add = mysqlAdd();
         await add.insertData(newResult, action);
     }
 
