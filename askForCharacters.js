@@ -2,6 +2,7 @@
 function askForCharacter(rl, menu) {
 
     function iterateThroughResults(result) {
+        console.log('RESULT', result);
         for (var i = 0; i < result.length; i++) {
             console.log(i+1, result[i].name);
         }
@@ -73,4 +74,4 @@ function askForCharacter(rl, menu) {
     });
 }
 
-module.exports = { askForCharacter }
+module.exports = { askForCharacter, iterateThroughResults }
