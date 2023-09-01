@@ -8,6 +8,7 @@ const rl = require("readline").createInterface({
     input: process.stdin,
     output: process.stdout
 });
+
 console.clear();
 console.log('WELCOME TO THE GALAXY!');
 

@@ -1,13 +1,14 @@
 async function deleteCharacter(rl, menu) {
 
     async function removeItem(del, action) {
-        const mongoRemove = require("./mongoRemove");
-        const remove = mongoRemove();
+        const MySqlRemove = require("./MySqlRemove");
+        const remove = MySqlRemove();
         await remove.removeData(del, action);
     }
 
-    await require("./mongoSee")().seeData('summary');
-    rl.question("Which character do you want to delete? ", async function(del) {
+    const resultLength = await require("./MySqlSee")().seeData('summary');
+    if (resultLength === 0) return;
+    rl.question("Which character do you want to delete? (# or (A) for all)", async function(del) {
         if (del == 'a') {
            await removeItem(del, 'all');
         } else {

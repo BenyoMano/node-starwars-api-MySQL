@@ -1,13 +1,13 @@
 async function swapCharacter(rl, menu) {
 
     async function swapItem(swap1, swap2) {
-        const mongoSwap = require("./mongoSwap");
-        const swap = mongoSwap();
+        const MySqlSwap = require("./MySqlSwap");
+        const swap = MySqlSwap();
         await swap.swapData(swap1, swap2);
     }
     async function findAll() {
-        const mongoSee = require("./mongoSee");
-        const see = mongoSee();
+        const MySqlSee = require("./MySqlSee");
+        const see = MySqlSee();
         await see.seeData();
 }
 
