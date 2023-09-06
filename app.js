@@ -14,7 +14,7 @@ console.log('WELCOME TO THE GALAXY!');
 
 
 function menu() {
-    rl.question("Do you want to add (A), swap (S), remove (R), see (C) a character, or quit (Q)?\n", async function(answer) {
+    rl.question("Do you want to add (A), swap (S), remove (R), see (C) list of characters, or quit (Q)?\n", async function(answer) {
         if (answer == 'a') {
             try {
                 await askForCharacter.askForCharacter(rl, menu);
