@@ -1,6 +1,9 @@
 {
   "name": "node-app",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=18"
+  },
   "description": "",
   "main": "app.js",
   "scripts": {
@@ -11,17 +14,12 @@
   "author": "Benjo",
   "license": "ISC",
   "dependencies": {
-    "@mysql/xdevapi": "^8.0.33",
     "env-cmd": "^10.1.0",
-    "eslint": "^8.42.0",
-    "express": "^4.18.2",
-    "mongodb": "5.6",
-    "mysql": "^2.18.1",
     "mysql2": "^3.3.5",
-    "mysql2-promise": "^0.1.4",
-    "node-fetch": "^3.3.1"
+    "mysql2-promise": "^0.1.4"
   },
   "devDependencies": {
+    "eslint": "^8.48.0",
     "vitest": "^0.32.2"
   }
 }
