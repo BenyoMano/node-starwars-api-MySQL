@@ -9,7 +9,7 @@
       let connection = await mysql.createConnection({
           host: 'localhost',
           user: 'root',
-          password: 'Pollylol#123',
+          password: process.env.PASSWORD,
           database: 'starwars',
       });
   

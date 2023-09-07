@@ -13,9 +13,8 @@ Make sure you have the following software installed:
 - [Git](https://git-scm.com/)
 - [MySQL](https://dev.mysql.com/downloads/) (To run the server locally)
 
-![Alt text](image-1.png)
-<img src="image-1.png" width=50% height=50%>
-![Alt text](<Skärmbild (14).png>)
+<img src="image-1.png" width=50%>
+<img src="Skärmbild (14).png" width=50%>
 
 In your console, clone the repository by writing:
 ```bash
