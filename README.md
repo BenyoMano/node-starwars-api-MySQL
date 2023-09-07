@@ -16,7 +16,6 @@ Make sure you have the following software installed:
 - [MySQL](https://dev.mysql.com/downloads/) (To run the server locally)
 <details>
 <summary>More on MySQL setup</summary>
-<div style="padding-left: 30px">
 <h3>Tip</h3>
 <p>Make sure you have your database configured correctly with its details matching the project's, accordingly:</p>
 <img src="./img/image-2.png" width=50%>
@@ -27,7 +26,6 @@ Make sure you have the following software installed:
 <br>
 <p>or by opening Windows services and starting <i>MySQL80</i> manually.</p>
 <img src="./img/services.png" width=50%>
-</div>
 </details>
 
 ### Run locally in your console:
@@ -37,7 +35,7 @@ git clone https://github.com/BenyoMano/node-starwars-api-MySQL.git
 ```
 Enter the project directory
 ````bash
-cd node-starwars-api-MongoDB
+cd node-starwars-api-MySQL
 ````
 Install dependencies
 ````bash
