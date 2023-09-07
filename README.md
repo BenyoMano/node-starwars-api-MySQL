@@ -11,6 +11,11 @@ Make sure you have the following software installed:
 
 - [Node.js](https://nodejs.org/)
 - [Git](https://git-scm.com/)
+- [MySQL](https://dev.mysql.com/downloads/) (To run the server locally)
+
+![Alt text](image-1.png)
+<img src="image-1.png" width=50% height=50%>
+![Alt text](<Skärmbild (14).png>)
 
 In your console, clone the repository by writing:
 ```bash

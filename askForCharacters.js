@@ -74,4 +74,4 @@ function askForCharacter(rl, menu) {
     });
 }
 
-module.exports = { askForCharacter, iterateThroughResults }
+module.exports = { askForCharacter }
